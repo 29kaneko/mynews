@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.profile')
 @section('title', 'Profileの新規作成')
 @section('content')
     <div class="container">
