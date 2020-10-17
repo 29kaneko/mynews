@@ -3,6 +3,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Profile;
+use App\Keepprofile;
+use Carbon\Carbon;
 class ProfileController extends Controller
 {
   public function add()
@@ -67,7 +69,12 @@ class ProfileController extends Controller
 
       $profiles->fill($profiles_form)->save();
 
-      return redirect('admin/profile');
+        $keepprofile = new Keepprofile;
+        $keepprofile->profile_id = $profiles->id;
+        $keepprofile->edited_at = Carbon::now();
+        $keepprofile->save();
+
+      return redirect('admin/profile/');
   }
   
   public function delete(Request $request)
