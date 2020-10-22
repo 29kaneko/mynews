@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfilekeepTable extends Migration
+class CreateSaveTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateProfilekeepTable extends Migration
      */
     public function up()
     {
-        Schema::create('keepprofiles', function (Blueprint $table) {
+        Schema::create('saves', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('prfile_id');
+            $table->integer('profile_id');
             $table->string('edited_at');
+            
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateProfilekeepTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('keepprofiles');
+        Schema::dropIfExists('save');
     }
 }

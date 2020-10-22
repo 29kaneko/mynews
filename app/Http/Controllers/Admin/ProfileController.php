@@ -3,7 +3,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Profile;
-use App\Keepprofile;
+use App\Save;
 use Carbon\Carbon;
 class ProfileController extends Controller
 {
@@ -64,15 +64,16 @@ class ProfileController extends Controller
         } else {
             $profiles_form['image_path'] = $profiles->image_path;
         }
-
+      unset($profiles_form['image']);
+      unset($profiles_form['remove']);
       unset($profiles_form['_token']);
 
       $profiles->fill($profiles_form)->save();
 
-        $keepprofile = new Keepprofile;
-        $keepprofile->profile_id = $profiles->id;
-        $keepprofile->edited_at = Carbon::now();
-        $keepprofile->save();
+      $save = new Save;
+      $save->profile_id = $profiles->id;
+      $save->edited_at = Carbon::now();
+      $save->save();
 
       return redirect('admin/profile/');
   }

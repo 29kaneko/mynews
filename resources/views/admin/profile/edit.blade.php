@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-10">
-                            <input type="hidden" name="id" value="{{ $news_form->id }}">
+                            <input type="hidden" name="id" value="{{ $profiles_form->id }}">
                             {{ csrf_field() }}
                             <input type="submit" class="btn btn-primary" value="更新">
                         </div>
@@ -49,9 +49,9 @@
                     <div class="col-md-4 mx-auto">
                         <h2>編集履歴</h2>
                         <ul class="list-group">
-                            @if ($profiles_form->keepprofiles != NULL)
-                                @foreach ($profiles_form->keepprofiles as $keepprofile)
-                                    <li class="list-group-item">{{ $keepprofile->edited_at }}</li>
+                            @if ($profiles_form->saves != NULL)
+                                @foreach ($profiles_form->saves as $save)
+                                    <li class="list-group-item">{{ $save->edited_at }}</li>
                                 @endforeach
                             @endif
                         </ul>

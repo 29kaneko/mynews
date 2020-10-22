@@ -16,8 +16,8 @@ class Profile extends Model
         
     );
     
-    public function keepprofiles()
+    public function saves()
     {
-        return $this->hasMany('App\Keepprofile');
+        return $this->hasMany('App\Save');
     }
 }
